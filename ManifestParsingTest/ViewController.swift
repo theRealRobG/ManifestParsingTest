@@ -8,12 +8,42 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var testMagnitudeInput: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        testMagnitudeInput.keyboardType = .numberPad
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
 
+    @IBAction func onRunTouched(_ sender: Any) {
+        defer {
+            DispatchQueue.main.async { [weak self] in
+                self?.durationLabel.sizeToFit()
+            }
+        }
+        guard let magnitude = testMagnitudeInput.text.flatMap({ Int($0) }) else {
+            durationLabel.text = "Positive integer necessary."
+            return
+        }
+        durationLabel.text = "Running..."
+        TestRunner(testMagnitude: magnitude).run { result in
+            switch result {
+            case .success(let time):
+                DispatchQueue.main.async { [weak self] in
+                    self?.durationLabel.text = "\(round(time * 100000) / 100000)"
+                }
+            case .failure(let error):
+                DispatchQueue.main.async { [weak self] in
+                    self?.durationLabel.text = "\(error)"
+                }
+            }
+        }
+    }
 
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        testMagnitudeInput.resignFirstResponder()
+    }
 }
-
