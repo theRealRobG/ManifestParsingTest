@@ -24,6 +24,12 @@
 		82E7455427A179ED004687F4 /* LoadingFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455227A179ED004687F4 /* LoadingFailure.swift */; };
 		82E7455627A17A09004687F4 /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455527A17A09004687F4 /* ResourceLoader.swift */; };
 		82E7455727A17A09004687F4 /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455527A17A09004687F4 /* ResourceLoader.swift */; };
+		82E7455927A18E23004687F4 /* ManifestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455827A18E23004687F4 /* ManifestData.swift */; };
+		82E7455A27A18E23004687F4 /* ManifestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455827A18E23004687F4 /* ManifestData.swift */; };
+		82E7455C27A196B0004687F4 /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455B27A196B0004687F4 /* TestResult.swift */; };
+		82E7455D27A196B0004687F4 /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455B27A196B0004687F4 /* TestResult.swift */; };
+		82E7455F27A19B00004687F4 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455E27A19B00004687F4 /* TimeInterval+Extension.swift */; };
+		82E7456027A19B00004687F4 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7455E27A19B00004687F4 /* TimeInterval+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,9 @@
 		82E7454F27A179B3004687F4 /* TestRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRunner.swift; sourceTree = "<group>"; };
 		82E7455227A179ED004687F4 /* LoadingFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFailure.swift; sourceTree = "<group>"; };
 		82E7455527A17A09004687F4 /* ResourceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
+		82E7455827A18E23004687F4 /* ManifestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestData.swift; sourceTree = "<group>"; };
+		82E7455B27A196B0004687F4 /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
+		82E7455E27A19B00004687F4 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +121,12 @@
 		82E7454827A16464004687F4 /* ManifestParsingTestShared */ = {
 			isa = PBXGroup;
 			children = (
-				82E7454F27A179B3004687F4 /* TestRunner.swift */,
 				82E7455227A179ED004687F4 /* LoadingFailure.swift */,
+				82E7455827A18E23004687F4 /* ManifestData.swift */,
 				82E7455527A17A09004687F4 /* ResourceLoader.swift */,
+				82E7455B27A196B0004687F4 /* TestResult.swift */,
+				82E7454F27A179B3004687F4 /* TestRunner.swift */,
+				82E7455E27A19B00004687F4 /* TimeInterval+Extension.swift */,
 			);
 			path = ManifestParsingTestShared;
 			sourceTree = "<group>";
@@ -223,10 +235,13 @@
 			files = (
 				82E7452427A1634E004687F4 /* ViewController.swift in Sources */,
 				82E7455027A179B3004687F4 /* TestRunner.swift in Sources */,
+				82E7455C27A196B0004687F4 /* TestResult.swift in Sources */,
 				82E7455627A17A09004687F4 /* ResourceLoader.swift in Sources */,
 				82E7455327A179ED004687F4 /* LoadingFailure.swift in Sources */,
 				82E7452027A1634E004687F4 /* AppDelegate.swift in Sources */,
 				82E7452227A1634E004687F4 /* SceneDelegate.swift in Sources */,
+				82E7455927A18E23004687F4 /* ManifestData.swift in Sources */,
+				82E7455F27A19B00004687F4 /* TimeInterval+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +251,11 @@
 			files = (
 				82E7453C27A16373004687F4 /* ViewController.swift in Sources */,
 				82E7455427A179ED004687F4 /* LoadingFailure.swift in Sources */,
+				82E7455A27A18E23004687F4 /* ManifestData.swift in Sources */,
+				82E7456027A19B00004687F4 /* TimeInterval+Extension.swift in Sources */,
 				82E7455727A17A09004687F4 /* ResourceLoader.swift in Sources */,
 				82E7455127A179B3004687F4 /* TestRunner.swift in Sources */,
+				82E7455D27A196B0004687F4 /* TestResult.swift in Sources */,
 				82E7453A27A16373004687F4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

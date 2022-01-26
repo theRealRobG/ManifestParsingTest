@@ -31,9 +31,12 @@ class ViewController: UIViewController {
         durationLabel.text = "Running..."
         TestRunner(testMagnitude: magnitude).run { result in
             switch result {
-            case .success(let time):
+            case .success(let result):
                 DispatchQueue.main.async { [weak self] in
-                    self?.durationLabel.text = "\(round(time * 100000) / 100000)"
+                    let line1 = "Long: \(result.longManifestParsingTime.rounded(decimals: 5))"
+                    let line2 = "Short: \(result.shortManifestParsingTime.rounded(decimals: 5))"
+                    let line3 = "Avg. Diff: \(result.averageDifference.rounded(decimals: 5))"
+                    self?.durationLabel.text = "\(line1)\n\(line2)\n\(line3)"
                 }
             case .failure(let error):
                 DispatchQueue.main.async { [weak self] in
