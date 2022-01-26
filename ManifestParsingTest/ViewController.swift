@@ -19,11 +19,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onRunTouched(_ sender: Any) {
-        defer {
-            DispatchQueue.main.async { [weak self] in
-                self?.durationLabel.sizeToFit()
-            }
-        }
         guard let magnitude = testMagnitudeInput.text.flatMap({ Int($0) }) else {
             durationLabel.text = "Positive integer necessary."
             return
