@@ -10,6 +10,7 @@ class TestRunner {
     private let shortManifestResourceLoader: ResourceLoader
     private let shortManifestDispatchTimeCalculator: DispatchTimeCalculator
     private let loaderQueue = DispatchQueue(label: "loader-queue", qos: .userInteractive)
+    private let testRunnerQueue = DispatchQueue(label: "test-runner-queue", qos: .userInteractive)
     private var isRunInProgress = false
 
     /// A runner for the manifest parsing duration test
@@ -38,15 +39,26 @@ class TestRunner {
     func run(completion: @escaping (Result<TestResult, Error>) -> Void) {
         guard !isRunInProgress else { fatalError("Cannot run more than one test at a time") }
         isRunInProgress = true
-        let info = ProcessInfo.processInfo
-        let start = info.systemUptime
-        test(strategy: .longManifest, number: testMagnitude) { result in
-            self.isRunInProgress = false
-            switch result {
+        testRunnerQueue.async {
+            let group = DispatchGroup()
+            group.enter()
+
+            let info = ProcessInfo.processInfo
+            let start = info.systemUptime
+            var longManifestResult: Result<Void, Error>!
+            self.test(strategy: .longManifest, number: self.testMagnitude) { result in
+                longManifestResult = result
+                group.leave()
+            }
+
+            group.wait()
+
+            let endLong = info.systemUptime
+            switch longManifestResult! {
             case .failure(let error): completion(.failure(error))
             case .success:
-                let endLong = info.systemUptime
                 self.test(strategy: .shortManifest, number: self.testMagnitude) { result in
+                    self.isRunInProgress = false
                     switch result {
                     case .failure(let error): completion(.failure(error))
                     case .success:
